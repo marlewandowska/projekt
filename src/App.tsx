@@ -4,10 +4,9 @@ import { Wrapper } from "./components/Wrapper"
 import { Test } from "./components/Test";
 
 
-type TPageState = "Login" | "Register"
 
 function App() {
-  const [pageState, setPageState] = useState<TPageState>("Login");
+  const [number, setNumber] = useState(0);
   return (
     <>
       <Navbar />

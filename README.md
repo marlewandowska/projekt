@@ -1,3 +1,3 @@
 # Intranet Module Template
 
-Includes Typescript and ViteJS
+Includes Typescript and ViteJS 

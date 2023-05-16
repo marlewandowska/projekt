@@ -31,7 +31,7 @@ const Wrapper2 = () => {
 
             <div className="remember-forgot">
               <label><input type="checkbox"/>Accept</label>
-            </div>
+            </div> 
             <button type="submit" className="btn">Register</button>
             <div className="login-register">
               <p>Already have an account?<a href="#" className="login-link">Login</a></p>

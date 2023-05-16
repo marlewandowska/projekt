@@ -21,4 +21,4 @@ const Test = () => {
 export {Test}
 
 // napisac aplikacje ktora przechowuje numer, niech ten numer jest wyswietlany niech sa 4 przyciski ktore modyfikuja ten numer +1 -1 +5 -5 
-// niech tez jest input ktory przyjmuje tylko numery i po klikniecu w przycisk modyfikuje wyswietlany numer, oddzielny komponent
+// niech tez jest input ktory przyjmuje tylko numery i po klikniecu w przycisk modyfikuje wyswietlany numer, oddzielny komponent 

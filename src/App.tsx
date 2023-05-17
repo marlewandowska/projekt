@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Navbar } from "./components/Navbar"
 import { Wrapper } from "./components/Wrapper"
 import { Test } from "./components/Test";
-import { Calculator } from "./components/Calculator";
+import Calculator from "./components/Calculator";
 
 
 

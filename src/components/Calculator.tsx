@@ -1,14 +1,20 @@
-import { useEffect, useState } from "react";
+import React from 'react';
 
-async function Calculator() {
-    const response = await fetch("http://api.nbp.pl/api/exchangerates/tables/A/");
-    const jsonData = await response.json();
-    console.log(jsonData);
-    return(
-        <div>
-            <button onClick={Calculator}>Klik</button>
-        </div>
-    )
+class Calculator extends React.Component {
+  fetchData = () => {
+    fetch('http://api.nbp.pl/api/exchangerates/tables/A/')
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
   }
 
-export { Calculator }
+  render() {
+    return (
+      <div>
+        <button onClick={this.fetchData}>Pobierz dane</button>
+      </div>
+    );
+  }
+}
+
+export default Calculator;

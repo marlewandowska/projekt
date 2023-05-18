@@ -34,7 +34,7 @@ const Wrapper2 = () => {
             </div> 
             <button type="submit" className="btn">Register</button>
             <div className="login-register">
-              <p>Already have an account?<a href="#" className="login-link">Login</a></p>
+              <p>Already have an account? <button className="login-link" onClick={}>Login</button></p>
             </div>
           </form>
         </div>

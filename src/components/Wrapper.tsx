@@ -50,7 +50,7 @@ const Wrapper = () => {
     );
   } else if (trueOrFalse === false) {
     return (
-      <div className="wrapper2">
+      <div className="wrapper">
         <div className="form-box login">
           <h2>Register</h2>
           <form action="#">

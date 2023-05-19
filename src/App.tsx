@@ -1,20 +1,24 @@
 import { useState } from "react";
-import { Navbar } from "./components/Navbar";
-import { Wrapper } from "./components/Wrapper";
-import { Test } from "./components/Test";
-import Calculator from "./components/Calculator";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/HomePage";
+import Login from "./pages/LoginPage";
+import Register from "./pages/RegisterPage";
 
-function App() {
-  const [number, setNumber] = useState(0);
 
-  return (
-    <>
-      {/* <Navbar /> */}
-      {/* <Test/> */}
-      {/* <Calculator /> */}
-      <Wrapper />
-    </>
-  );
+export interface IAppProps {}
+ 
+const App: React.FunctionComponent<IAppProps> = (props) => {
+  return ( 
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="LoginPage" element={<Login />}/>
+          <Route path="RegisterPage" element={<Register />}/>
+        </Routes>
+      </BrowserRouter>
+   );
 }
+ 
 
 export default App;

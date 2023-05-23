@@ -1,8 +1,24 @@
+import { SupabaseClient } from "@supabase/supabase-js";
 import React from "react";
 
 export interface IRegisterProps {}
  
 const Register: React.FunctionComponent<IRegisterProps> = (props) => {
+
+    const url = "https://nuqkitkvmomzufdvbhin.supabase.co";
+    const api = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im51cWtpdGt2bW9tenVmZHZiaGluIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMjAwNDAsImV4cCI6MTk5OTc5NjA0MH0.lKaAn-KVu2gcgyiePcx9dHnlRv5-qObqxtYwrYyl8eI";
+    
+    const temp = new SupabaseClient(url, api);
+
+    const fun = async () => {
+        const { data, error } = await temp.auth.signUp({
+            email: "test@test.pl",
+            password: "test1234"
+        })
+        console.log(data, error)
+    }
+
+
     return ( 
         <div className="wrapper2">
             <div className="form-box login">

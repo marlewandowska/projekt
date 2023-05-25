@@ -1,5 +1,5 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import React from "react";
+import React, { useState } from "react";
 
 export interface ILoginProps { }
 
@@ -10,10 +10,13 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
     
     const temp = new SupabaseClient(url, api);
 
-    const fun = async () => {
+    const [newLEmail, setLEmail] = useState('')
+    const [newLPassword, setLPassword] = useState('')
+
+    const newLogin = async () => {
         const { data, error } = await temp.auth.signInWithPassword({
-            email: "test@test.pl",
-            password: "test"
+            email: newLEmail,
+            password: newLPassword
         })
         console.log(data, error)
     }
@@ -21,23 +24,23 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
     return (
         <div className="wrapper">
             <div className="form-box login">
-                <h2>Login</h2>
+                <h2>Log in</h2>
                 <form action="#">
                     <div className="input-box">
                         <span className="icon"><ion-icon name="mail"></ion-icon></span>
-                        <input type="email" required />
+                        <input type="email" onChange={(event) => setLEmail(event.target.value)} required />
                         <label>Email</label>
                     </div>
                     <div className="input-box">
                         <span className="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                        <input type="password" required />
+                        <input type="password" onChange={(event) => setLPassword(event.target.value)} required />
                         <label>Password</label>
                     </div>
                     <div className="remember-forgot">
                         <label><input type="checkbox" />Remember me</label>
                         <a href="#">Forgot Password?</a>
                     </div>
-                    <button type="submit" className="btn">Log In</button>
+                    <button type="submit" className="btn" onClick={() => newLogin()}>Log In</button>
                     <div className="login-register">
                         <p>Don't have an account?<a href="RegisterPage" className="register-link">Sign Up</a></p>
                     </div>

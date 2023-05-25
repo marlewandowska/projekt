@@ -1,5 +1,5 @@
 import { SupabaseClient } from "@supabase/supabase-js";
-import React from "react";
+import React, { useState } from "react";
 
 export interface IRegisterProps {}
  
@@ -10,12 +10,16 @@ const Register: React.FunctionComponent<IRegisterProps> = (props) => {
     
     const temp = new SupabaseClient(url, api);
 
-    const fun = async () => {
+    const [newREmail, setREmail] = useState('')
+    const [newRPassword, setRPassword] = useState('')
+
+    const newRegister = async () => {
         const { data, error } = await temp.auth.signUp({
-            email: "test@test.pl",
-            password: "test1234"
+            email: newREmail,
+            password: newRPassword
         })
         console.log(data, error)
+        window.alert("Successfully registered! \nVerify your account to log in.")
     }
 
 
@@ -26,15 +30,15 @@ const Register: React.FunctionComponent<IRegisterProps> = (props) => {
                 <form action="#">
                     <div className="input-box">
                         <span className="icon"><ion-icon name="mail"></ion-icon></span>
-                        <input type="email" required />
+                        <input type="email" onChange={(event) => setREmail(event.target.value)} required />
                         <label>Email</label>
                     </div>
                     <div className="input-box">
                         <span className="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                        <input type="password" required />
+                        <input type="password" onChange={(event) => setRPassword(event.target.value)} required />
                         <label>Password</label>
                     </div>
-                    <button type="submit" className="btn">Sign Up</button>
+                    <button type="submit" className="btn" onClick={() => newRegister()}>Sign Up</button>
                     <div className="login-register">
                         <p>Already have an account?<a href="LoginPage" className="register-link">Log In</a></p>
                     </div>

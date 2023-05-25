@@ -1,5 +1,6 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export interface IRegisterProps {}
  
@@ -22,6 +23,10 @@ const Register: React.FunctionComponent<IRegisterProps> = (props) => {
         window.alert("Successfully registered! \nVerify your account to log in.")
     }
 
+    const nav = useNavigate();
+    const loginPageHandler = () => {
+        nav('/')
+    }
 
     return ( 
         <div className="wrapper2">
@@ -40,7 +45,7 @@ const Register: React.FunctionComponent<IRegisterProps> = (props) => {
                     </div>
                     <button type="submit" className="btn" onClick={() => newRegister()}>Sign Up</button>
                     <div className="login-register">
-                        <p>Already have an account?<a href="LoginPage" className="register-link">Log In</a></p>
+                        <p>Already have an account?<a onClick={loginPageHandler} className="register-link">Log In</a></p>
                     </div>
                 </form>
             </div>

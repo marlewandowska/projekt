@@ -4,21 +4,25 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/HomePage";
 import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
+import Nav from "./pages/NavBar";
 
 
-export interface IAppProps {}
- 
+export interface IAppProps { }
+
 const App: React.FunctionComponent<IAppProps> = (props) => {
-  return ( 
-      <BrowserRouter>
+  return (
+    <BrowserRouter>
+      <div className="App">
+        <Nav />
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="LoginPage" element={<Login />}/>
-          <Route path="RegisterPage" element={<Register />}/>
+          <Route path="HomePage" element={<Home />} />
+          <Route path="/" element={<Login />} />
+          <Route path="RegisterPage" element={<Register />} />
         </Routes>
-      </BrowserRouter>
-   );
+      </div>
+    </BrowserRouter>
+  );
 }
- 
+
 
 export default App;

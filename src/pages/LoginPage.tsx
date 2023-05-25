@@ -1,5 +1,6 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export interface ILoginProps { }
 
@@ -21,6 +22,11 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
         console.log(data, error)
     }
 
+    const nav = useNavigate();
+    const registerPageHandler = () => {
+        nav('/RegisterPage')
+    }
+    
     return (
         <div className="wrapper">
             <div className="form-box login">
@@ -42,7 +48,7 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
                     </div>
                     <button type="submit" className="btn" onClick={() => newLogin()}>Log In</button>
                     <div className="login-register">
-                        <p>Don't have an account?<a href="RegisterPage" className="register-link">Sign Up</a></p>
+                        <p>Don't have an account?<a onClick={registerPageHandler} className="register-link">Sign Up</a></p>
                     </div>
                 </form>
             </div>

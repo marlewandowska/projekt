@@ -41,6 +41,7 @@ header{
   font-weight: 500;
   margin-left: 40px;
   left: 340px;
+  cursor: pointer;
 }
 
 
@@ -208,6 +209,7 @@ header{
   text-align: center;
   font-weight: 500;
   margin: 25px 0 10px;
+  cursor: pointer;
 }
 
 .login-register p a {

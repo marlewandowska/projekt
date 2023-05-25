@@ -1,6 +1,7 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AsyncButton from "./AsyncButton";
 
 export interface ILoginProps { }
 
@@ -15,6 +16,7 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
     const [newLPassword, setLPassword] = useState('')
 
     const newLogin = async () => {
+        console.log("asa")
         const { data, error } = await temp.auth.signInWithPassword({
             email: newLEmail,
             password: newLPassword
@@ -46,7 +48,7 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
                         <label><input type="checkbox" />Remember me</label>
                         <a href="#">Forgot Password?</a>
                     </div>
-                    <button type="submit" className="btn" onClick={() => newLogin()}>Log In</button>
+                    <AsyncButton label={"Log In"} asyncfunction={newLogin}/>
                     <div className="login-register">
                         <p>Don't have an account?<a onClick={registerPageHandler} className="register-link">Sign Up</a></p>
                     </div>

@@ -1,6 +1,7 @@
 import { SupabaseClient } from "@supabase/supabase-js";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import AsyncButton from "./AsyncButton";
 
 export interface IRegisterProps {}
  
@@ -20,7 +21,6 @@ const Register: React.FunctionComponent<IRegisterProps> = (props) => {
             password: newRPassword
         })
         console.log(data, error)
-        window.alert("Successfully registered! \nVerify your account to log in.")
     }
 
     const nav = useNavigate();
@@ -43,7 +43,7 @@ const Register: React.FunctionComponent<IRegisterProps> = (props) => {
                         <input type="password" onChange={(event) => setRPassword(event.target.value)} required />
                         <label>Password</label>
                     </div>
-                    <button type="submit" className="btn" onClick={() => newRegister()}>Sign Up</button>
+                    <AsyncButton label={"Sing Up"} asyncfunction={newRegister}/>
                     <div className="login-register">
                         <p>Already have an account?<a onClick={loginPageHandler} className="register-link">Log In</a></p>
                     </div>

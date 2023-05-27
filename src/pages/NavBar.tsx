@@ -16,6 +16,11 @@ const Nav: React.FunctionComponent<INavProps> = (props) => {
         nav('/HomePage')
     }
 
+    //przycisk calculator
+    const nav3 = useNavigate();
+    const calcHandler = () => {
+        nav('/Calculator')
+    }
     return (
 
         <header>
@@ -23,7 +28,7 @@ const Nav: React.FunctionComponent<INavProps> = (props) => {
 
             <nav className="navigation">
                 <a onClick={hPHandler}>Home</a>
-                <a href="#">About</a>
+                <a onClick={calcHandler}>Calculator</a>
                 <a href="#">Services</a>
                 <a href="#">Contact</a>
             </nav>

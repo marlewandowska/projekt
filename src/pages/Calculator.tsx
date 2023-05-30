@@ -14,6 +14,7 @@ const Calculator: React.FC = () => {
     const [showTable, setShowTable] = useState(false);
 
     //kalkulator
+    const [showCalc, setShowCalc] = useState(false);
     const [fromCurrency, setFromCurrency] = useState<string>('PLN');
     const [toCurrency, setToCurrency] = useState<string>('USD');
     const [amount, setAmount] = useState<number>(0);
@@ -59,7 +60,11 @@ const Calculator: React.FC = () => {
     };
 
 
-
+    useEffect(() => {
+        if (showCalc) {
+            fetchData();
+        }
+    }, [showCalc]);
 
 
 
@@ -83,79 +88,120 @@ const Calculator: React.FC = () => {
 
     const handleButtonClick = () => {
         setShowTable(true);
+        setShowCalc(true);
     };
 
     return (
-
-        // <div className="waluty">
-        //     {!showTable && (
-        //         <button className='btnCalc' onClick={handleButtonClick}>Show table & calculator</button>
-        //     )}
-        //     <div className="waluty2">
-        //         {showTable && (
-
-
-
-
-        //     <div>
-        //         <button className='btnCalc2' onClick={() => setShowTable(false)}>Hide table & calculator</button>
-        //         <table>
-        //             <thead>
-        //                 <tr>
-        //                     <th>Nazwa waluty</th>
-        //                     <th>Kod waluty</th>
-        //                     <th>Kurs średni</th>
-        //                 </tr>
-        //             </thead>
-        //             <tbody>
-        //                 {currencies.map((currency) => (
-        //                     <tr key={currency.code}>
-        //                         <td>{currency.currency}</td>
-        //                         <td>{currency.code}</td>
-        //                         <td>{currency.mid}</td>
-        //                     </tr>
-        //                 ))}
-        //             </tbody>
-        //         </table>
-        //     </div>
-        //         )}
-        // </div>
-        // </div >
-        <div>
-            <h2>Currency Converter</h2>
-            <div>
-                <label>Amount:</label>
-                <input type="number" value={amount} onChange={handleAmountChange} />
-            </div>
-            <div>
-                <label>From:</label>
-                <select value={toCurrency} onChange={handleToCurrencyChange}>
-                    {currencies.map((currency) => (
-                        <option key={currency.code} value={currency.code}>
-                            {currency.currency}
-                        </option>
-                    ))}
-                </select>
-
-            </div>
-            <div>
-                <label>To:</label>
-                <select value={fromCurrency} onChange={handleFromCurrencyChange}>
-                    {currencies.map((currency) => (
-                        <option key={currency.code} value={currency.code}>
-                            {currency.currency}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <button onClick={handleConversion}>Convert</button>
-            {convertedAmount > 0 && (
-                <div>
-                    <h3>Converted Amount:</h3>
-                    <p>{convertedAmount.toFixed(5)}</p>
-                </div>
+        //div główny
+        <div className="waluty">
+            {!showTable && (
+                <button className='btnCalc' onClick={handleButtonClick}>Show table & calculator</button>
             )}
-        </div>
+            {/* div z tabelą */}
+
+            <div className="waluty2">
+                {showTable && (
+                    <div>
+                        <button className='btnCalc2' onClick={() => setShowTable(false) || setShowCalc(false)}>Hide table & calculator</button>
+                        <div className="tabela">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Nazwa waluty</th>
+                                        <th>Kod waluty</th>
+                                        <th>Kurs średni</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {currencies.map((currency) => (
+                                        <tr key={currency.code}>
+                                            <td>{currency.currency}</td>
+                                            <td>{currency.code}</td>
+                                            <td>{currency.mid}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                )}
+                {showCalc && (
+                    <div className="calculatorWalutowy">
+                        <h2>Currency Converter</h2>
+                        <div>
+                            <label>Amount:</label>
+                            <input type="number" value={amount} onChange={handleAmountChange} />
+                        </div>
+                        <div>
+                            <label>From:</label>
+                            <select value={toCurrency} onChange={handleToCurrencyChange}>
+                                {currencies.map((currency) => (
+                                    <option key={currency.code} value={currency.code}>
+                                        {currency.currency}
+                                    </option>
+                                ))}
+                            </select>
+
+                        </div>
+                        <div>
+                            <label>To:</label>
+                            <select value={fromCurrency} onChange={handleFromCurrencyChange}>
+                                {currencies.map((currency) => (
+                                    <option key={currency.code} value={currency.code}>
+                                        {currency.currency}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                        <button onClick={handleConversion}>Convert</button>
+                        {convertedAmount > 0 && (
+                            <div className="wynik">
+                                <h3>Converted Amount:</h3>
+                                <p>{convertedAmount.toFixed(4)}</p>
+                            </div>
+                        )}
+                    </div>
+                )}
+            </div>
+        </div >
+
+
+
+        // <div>
+        //     <h2>Currency Converter</h2>
+        //     <div>
+        //         <label>Amount:</label>
+        //         <input type="number" value={amount} onChange={handleAmountChange} />
+        //     </div>
+        //     <div>
+        //         <label>From:</label>
+        //         <select value={toCurrency} onChange={handleToCurrencyChange}>
+        //             {currencies.map((currency) => (
+        //                 <option key={currency.code} value={currency.code}>
+        //                     {currency.currency}
+        //                 </option>
+        //             ))}
+        //         </select>
+
+        //     </div>
+        //     <div>
+        //         <label>To:</label>
+        //         <select value={fromCurrency} onChange={handleFromCurrencyChange}>
+        //             {currencies.map((currency) => (
+        //                 <option key={currency.code} value={currency.code}>
+        //                     {currency.currency}
+        //                 </option>
+        //             ))}
+        //         </select>
+        //     </div>
+        //     <button onClick={handleConversion}>Convert</button>
+        //     {convertedAmount > 0 && (
+        //         <div>
+        //             <h3>Converted Amount:</h3>
+        //             <p>{convertedAmount.toFixed(5)}</p>
+        //         </div>
+        //     )}
+        // </div>
     );
 };
 

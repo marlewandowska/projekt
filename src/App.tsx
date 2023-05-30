@@ -6,6 +6,8 @@ import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
 import Nav from "./pages/NavBar";
 import Calculator from "./pages/Calculator";
+import Calc2 from "./pages/Calculator2";
+import Calc3 from "./pages/Calculator3";
 
 export interface IAppProps {}
 
@@ -36,6 +38,8 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
           <Route path="/" element={<Login url={supabaseURL} api={supabaseAPI} setIsLoggedIn={setIsLoggedIn}/>} />
           <Route path="RegisterPage" element={<Register />} />
           <Route path="Calculator" element={<Calculator />} />
+          <Route path="Calculator2" element={<Calc2 />} />
+          <Route path="Calculator3" element={<Calc3 />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -101,7 +101,7 @@ header {
 
 
 .btnCalc {
-  width: 130px;
+  width: 350px;
   height: 50px;
   background: transparent;
   border: 2px solid #ffff;
@@ -126,10 +126,10 @@ header {
   left: 90px;
 } */
 .btnCalc2 {
-  position: absolute;
-  top: 700px;
-  left: 630px;
-  width: 130px;
+  position: fixed;
+  top: 750px;
+  left: 1050px;
+  width: 500px;
   height: 50px;
   background: transparent;
   border: 2px solid #ffff;
@@ -293,33 +293,44 @@ header {
   text-decoration: underline;
 }
 
-/* .waluty{
-text-align: center;
-} */
+
+
 
 .waluty2 {
-  position: relative;
+  position: absolute;
   right: 500px;
 }
 
 .tabela{
   color: #fff;
+  text-shadow: 1px 1px #162938;
   position: relative;
-  width: 550px;
-  height: 700px;
+  width: 570px;
+  height: 720px;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, .5);
   border-radius: 20px;
   backdrop-filter: blur(20px);
   box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-  display: flex;
+  display: grid;
+  top: -400px;
+  left: 400px;
   justify-content: center;
   align-items: center;
+  overflow: auto;
+}
+
+.tabela tr{
+  text-align: center;
 }
 
 .tabela th{
+  padding: 5px;
   font-weight: 600;
-  color: black;
+}
+
+.tabela td{
+  text-align: center;
 }
 
 .waluty {
@@ -328,11 +339,115 @@ text-align: center;
 }
 
 .calculatorWalutowy {
+  color: #fff;
+  text-shadow: 1px 1px #162938;
   position: relative;
-  left: 900px;
-  top: -350px;
+  display: grid;
+  border: 2px solid rgba(255, 255, 255, .5);
+  border-radius: 20px;
+  background: transparent;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+  width: 500px;
+  height: 450px;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  left: 1200px;
+  top: -1030px;
+}
+
+.btnConvert{
+  /* width: 130px;
+  height: 50px; */
+  padding: 7px;
+  width: 100%;
+  text-align: center;
+  background: transparent;
+  border: 2px solid #ffff;
+  outline: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  /* margin-left: 40px; */
+  font-weight: 500;
+  color: #ffff;
+  transition: .5s;
+}
+
+.btnConvert:hover {
+  background: #fff;
+  color: #162938;
 }
 
 .wynik{
   position: relative;
+}
+
+.selectCustom{
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 2px;
+  margin: 0 auto;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+  font-size: 18px;
+  color: #60666d;
+}
+
+.number{
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 2px;
+  font-family: 'Open Sans', 'Helvetica Neue', 'Segoe UI', 'Calibri', 'Arial', sans-serif;
+  font-size: 18px;
+  color: #60666d;
+}
+
+/* .h1{
+  color: #fff;
+  position: relative;
+  text-align: center;
+  padding: 35px;
+  top: -20px;
+} */
+
+.whichTable{
+  color: #fff;
+  text-shadow: 1px 1px #162938;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  font-size: 1.1em;
+  display: grid;
+  border: 2px solid rgba(255, 255, 255, .5);
+  border-radius: 20px;
+  background: transparent;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+  height: 400px;
+  width: 900px;
+}
+
+.btnCalc4{
+  position: relative;
+  width: 500px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #ffff;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-left: 40px;
+  font-weight: 500;
+  color: #ffff;
+  transition: .5s;
+}
+
+.btnCalc4:hover {
+  background: #fff;
+  color: #162938;
 }

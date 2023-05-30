@@ -2,22 +2,15 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
+export interface ICalc2Props {}
+
 interface Currency {
     currency: string;
     code: string;
     mid: number;
 }
 
-const Calculator: React.FC = () => {
-    //hidden
-    useEffect(() => {
-        document.body.style.overflow = 'hidden';
-
-        return () => {
-            document.body.style.overflow = 'auto';
-        }
-    }, []);
-
+const Calc2: React.FunctionComponent<ICalc2Props> = (props) => {
     const [currencies, setCurrencies] = useState<Currency[]>([]);
     const [showTable, setShowTable] = useState(false);
 
@@ -35,7 +28,7 @@ const Calculator: React.FC = () => {
 
     const fetchCurrencyData = async () => {
         try {
-            const response = await fetch('http://api.nbp.pl/api/exchangerates/tables/A/');
+            const response = await fetch('http://api.nbp.pl/api/exchangerates/tables/B/');
             const data = await response.json();
             const currencyData: Currency[] = data[0].rates;
             setCurrencies(currencyData);
@@ -85,7 +78,7 @@ const Calculator: React.FC = () => {
     const fetchData = async () => {
         try {
             const response = await axios.get(
-                'http://api.nbp.pl/api/exchangerates/tables/A/'
+                'http://api.nbp.pl/api/exchangerates/tables/B/'
             );
             const data = response.data[0].rates;
             setCurrencies(data);
@@ -100,55 +93,36 @@ const Calculator: React.FC = () => {
     };
 
     const nav = useNavigate();
-    const calc2Handler = () => {
-        nav('/Calculator2')
-    }
-
-    const nav2 = useNavigate();
-    const calc3Handler = () => {
-        nav('/Calculator3')
+    const calcGlHandler = () => {
+        nav('/Calculator')
     }
 
     return (
-        //div główny
         <div className="waluty">
-            {!showTable && (
-                <div className="whichTable">
-                    <h1>Which table do you wanna include?</h1>
-                    <button className="btnCalc4" onClick={handleButtonClick}>A</button>
-                    <button className="btnCalc4" onClick={calc2Handler}>B</button>
-                    <button className="btnCalc4" onClick={calc3Handler}>C</button>
-                </div>
-            )}
-            {/* div z tabelą */}
-
             <div className="waluty2">
-                {showTable && (
-                    <div>
-                        <button className='btnCalc2' onClick={() => setShowTable(false) || setShowCalc(false)}>Hide table & calculator</button>
-                        <div className="tabela">
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th><h2>Currency name</h2></th>
-                                        <th><h2>Currency code</h2></th>
-                                        <th><h2>Average</h2></th>
+                <div>
+                    <button className='btnCalc2' onClick={calcGlHandler}>Hide table & calculator</button>
+                    <div className="tabela">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th><h2>Currency name</h2></th>
+                                    <th><h2>Currency code</h2></th>
+                                    <th><h2>Average</h2></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {currencies.map((currency) => (
+                                    <tr key={currency.code}>
+                                        <td>{currency.currency}</td>
+                                        <td>{currency.code}</td>
+                                        <td>{currency.mid}</td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    {currencies.map((currency) => (
-                                        <tr key={currency.code}>
-                                            <td>{currency.currency}</td>
-                                            <td>{currency.code}</td>
-                                            <td>{currency.mid}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
+                                ))}
+                            </tbody>
+                        </table>
                     </div>
-                )}
-                {showCalc && (
+                </div>
                     <div className="calculatorWalutowy">
                         <h2>Currency Converter</h2>
                         <div>
@@ -184,10 +158,9 @@ const Calculator: React.FC = () => {
                             </div>
                         )}
                     </div>
-                )}
             </div>
         </div >
     );
 };
 
-export default Calculator;
+export default Calc2;

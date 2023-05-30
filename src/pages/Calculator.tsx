@@ -114,7 +114,7 @@ const Calculator: React.FC = () => {
         <div className="waluty">
             {!showTable && (
                 <div className="whichTable">
-                    <h1>Which table do you wanna include?</h1>
+                    <h1>Which table do you wanna open?</h1>
                     <button className="btnCalc4" onClick={handleButtonClick}>A</button>
                     <button className="btnCalc4" onClick={calc2Handler}>B</button>
                     <button className="btnCalc4" onClick={calc3Handler}>C</button>

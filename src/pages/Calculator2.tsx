@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
-export interface ICalc2Props {}
+export interface ICalc2Props { }
 
 interface Currency {
     currency: string;
@@ -11,6 +11,15 @@ interface Currency {
 }
 
 const Calc2: React.FunctionComponent<ICalc2Props> = (props) => {
+
+    useEffect(() => {
+        document.body.style.overflow = 'hidden';
+
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, []);
+
     const [currencies, setCurrencies] = useState<Currency[]>([]);
     const [showTable, setShowTable] = useState(false);
 
@@ -123,41 +132,41 @@ const Calc2: React.FunctionComponent<ICalc2Props> = (props) => {
                         </table>
                     </div>
                 </div>
-                    <div className="calculatorWalutowy">
-                        <h2>Currency Converter</h2>
-                        <div>
-                            <label>Amount:</label>
-                            <input className="number" type="number" value={amount} onChange={handleAmountChange} />
-                        </div>
-                        <div>
-                            <label>From:</label>
-                            <select className="selectCustom" value={toCurrency} onChange={handleToCurrencyChange}>
-                                {currencies.map((currency) => (
-                                    <option key={currency.code} value={currency.code}>
-                                        {currency.currency}
-                                    </option>
-                                ))}
-                            </select>
-
-                        </div>
-                        <div>
-                            <label>To:</label>
-                            <select className="selectCustom" value={fromCurrency} onChange={handleFromCurrencyChange}>
-                                {currencies.map((currency) => (
-                                    <option key={currency.code} value={currency.code}>
-                                        {currency.currency}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <button className="btnConvert" onClick={handleConversion}>Convert</button>
-                        {convertedAmount > 0 && (
-                            <div className="wynik">
-                                <h3>Converted Amount:</h3>
-                                <p>{convertedAmount.toFixed(4)}</p>
-                            </div>
-                        )}
+                <div className="calculatorWalutowy">
+                    <h2>Currency Converter</h2>
+                    <div>
+                        <label>Amount:</label>
+                        <input className="number" type="number" value={amount} onChange={handleAmountChange} />
                     </div>
+                    <div>
+                        <label>From:</label>
+                        <select className="selectCustom" value={toCurrency} onChange={handleToCurrencyChange}>
+                            {currencies.map((currency) => (
+                                <option key={currency.code} value={currency.code}>
+                                    {currency.currency}
+                                </option>
+                            ))}
+                        </select>
+
+                    </div>
+                    <div>
+                        <label>To:</label>
+                        <select className="selectCustom" value={fromCurrency} onChange={handleFromCurrencyChange}>
+                            {currencies.map((currency) => (
+                                <option key={currency.code} value={currency.code}>
+                                    {currency.currency}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <button className="btnConvert" onClick={handleConversion}>Convert</button>
+                    {convertedAmount > 0 && (
+                        <div className="wynik">
+                            <h3>Converted Amount:</h3>
+                            <p>{convertedAmount.toFixed(4)}</p>
+                        </div>
+                    )}
+                </div>
             </div>
         </div >
     );

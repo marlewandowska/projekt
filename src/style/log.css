@@ -451,3 +451,7 @@ header {
   background: #fff;
   color: #162938;
 }
+
+::-webkit-scrollbar-track{
+  border-radius: 10px;
+}

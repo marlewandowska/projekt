@@ -23,8 +23,8 @@ const Login: React.FunctionComponent<ILoginProps> = (props) => {
       password: newLPassword,
     });
     console.log(data, error);
-    if (data && !error) {
-      localStorage.setItem("isLoggedIn", "true");
+    if (data && !error && data.session) {
+      localStorage.setItem("accessToken", data.session.access_token);
       props.setIsLoggedIn(true);
       navigateToHomePage();
     }

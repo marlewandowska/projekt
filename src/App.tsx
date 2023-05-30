@@ -1,5 +1,5 @@
-import { useState } from "react";
-import React from "react";
+import { useEffect, useState } from "react";
+import { createClient, Session } from "@supabase/supabase-js";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/HomePage";
 import Login from "./pages/LoginPage";
@@ -14,6 +14,18 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
 
   const supabaseURL = "https://nuqkitkvmomzufdvbhin.supabase.co";
   const supabaseAPI = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im51cWtpdGt2bW9tenVmZHZiaGluIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQyMjAwNDAsImV4cCI6MTk5OTc5NjA0MH0.lKaAn-KVu2gcgyiePcx9dHnlRv5-qObqxtYwrYyl8eI";
+  
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      const supabase = createClient(supabaseURL, supabaseAPI);
+      const session = { access_token: token } as Session;
+      supabase.auth.setSession(session);
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+
 
   return (
     <BrowserRouter>

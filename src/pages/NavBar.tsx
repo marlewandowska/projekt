@@ -9,27 +9,24 @@ export interface INavProps {
 const Nav: React.FunctionComponent<INavProps> = (props:INavProps) => {
     //przycisk log in
     const nav = useNavigate();
+
     const logfHPHandler = () => {
         nav('/')
     }
     
     //przycisk home
-    const nav2 = useNavigate();
     const hPHandler = () => {
         nav('/HomePage')
     }
 
     //przycisk calculator
-    const nav3 = useNavigate();
     const calcHandler = () => {
         nav('/Calculator')
     }
 
-    const nav4 = useNavigate();
     const logOutHandler = () => {
-        // Tutaj możesz dodać kod do wylogowania użytkownika, np. żądanie do API
-        // Po pomyślnym wylogowaniu, ustaw stan setIsLoggedIn(false)
-        props.setIsLoggedIn(false);
+        localStorage.removeItem("accessToken"); // Usunięcie tokenu z localStorage
+        props.setIsLoggedIn(false); // Ustawienie stanu uwierzytelnienia na false
         nav("/");
       };
 

@@ -27,6 +27,7 @@ const Calculator: React.FC = () => {
     const [fromCurrency, setFromCurrency] = useState<string>('PLN');
     const [amount, setAmount] = useState<number>(0);
     const [convertedAmount, setConvertedAmount] = useState<number>(0);
+    const [plnRate, setPlnRate] = useState<number | undefined>(undefined);
 
     useEffect(() => {
         fetchCurrencyData();
@@ -38,6 +39,11 @@ const Calculator: React.FC = () => {
             const response = await fetch('http://api.nbp.pl/api/exchangerates/tables/A/');
             const data = await response.json();
             const currencyData: Currency[] = data[0].rates;
+            const plnCurrency = currencyData.find((currency) => currency.code === 'PLN');
+            if (plnCurrency) {
+                setPlnRate(plnCurrency.mid);
+            }
+
             setCurrencies(currencyData);
         } catch (error) {
             console.log('Error fetching currency data:', error);
@@ -58,8 +64,8 @@ const Calculator: React.FC = () => {
     };
 
     const handleConversion = () => {
-        const fromCurrencyRate = currencies.find((currency) => currency.code === fromCurrency)?.mid;
-        const toCurrencyRate = currencies.find((currency) => currency.code === toCurrency)?.mid;
+        const fromCurrencyRate = fromCurrency === 'PLN' ? 1 : currencies.find((currency) => currency.code === fromCurrency)?.mid;
+        const toCurrencyRate = toCurrency === 'PLN' ? 1 : currencies.find((currency) => currency.code === toCurrency)?.mid;
 
         if (fromCurrencyRate && toCurrencyRate) {
             const convertedValue = (amount / fromCurrencyRate) * toCurrencyRate;
@@ -158,6 +164,7 @@ const Calculator: React.FC = () => {
                         <div>
                             <label>From:</label>
                             <select className="selectCustom" value={toCurrency} onChange={handleToCurrencyChange}>
+                                <option value="PLN">Polish Zloty (PLN)</option>
                                 {currencies.map((currency) => (
                                     <option key={currency.code} value={currency.code}>
                                         {currency.currency}
@@ -169,6 +176,7 @@ const Calculator: React.FC = () => {
                         <div>
                             <label>To:</label>
                             <select className="selectCustom" value={fromCurrency} onChange={handleFromCurrencyChange}>
+                                <option value="PLN">Polish Zloty (PLN)</option>
                                 {currencies.map((currency) => (
                                     <option key={currency.code} value={currency.code}>
                                         {currency.currency}
@@ -176,11 +184,16 @@ const Calculator: React.FC = () => {
                                 ))}
                             </select>
                         </div>
+
                         <button className="btnConvert" onClick={handleConversion}>Convert</button>
                         {convertedAmount > 0 && (
                             <div className="wynik">
                                 <h3>Converted Amount:</h3>
-                                <p>{convertedAmount.toFixed(4)}</p>
+                                {toCurrency === 'PLN' ? (
+                                    <p>{convertedAmount.toFixed(4)} PLN</p>
+                                ) : (
+                                    <p>{convertedAmount.toFixed(4)}</p>
+                                )}
                             </div>
                         )}
                     </div>

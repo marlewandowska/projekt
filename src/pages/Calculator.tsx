@@ -190,7 +190,7 @@ const Calculator: React.FC = () => {
                             <div className="wynik">
                                 <h3>Converted Amount:</h3>
                                 {toCurrency === 'PLN' ? (
-                                    <p>{convertedAmount.toFixed(4)} PLN</p>
+                                    <p>{convertedAmount.toFixed(4)}</p>
                                 ) : (
                                     <p>{convertedAmount.toFixed(4)}</p>
                                 )}

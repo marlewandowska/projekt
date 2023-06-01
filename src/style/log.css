@@ -127,9 +127,9 @@ header {
 } */
 .btnCalc2 {
   position: relative;
-  top: 600px;
-  left: 72%;
-  width: 27vw;
+  top: 540px;
+  left: 73%;
+  width: 25vw;
   height: 50px;
   background: transparent;
   border: 2px solid #ffff;
@@ -297,39 +297,38 @@ header {
 
 
 
-.tabela {
+.tabela{
   color: #fff;
   text-shadow: 1px 1px #162938;
   position: relative;
   width: 30vw;
-  height: 80vh;
-  max-width: 1000px;
-  max-height: 1000px;
-  left: -80%;
-  top: -30px;
+  max-width: 12000px;
+  min-width: 400px;
+  height: 620px;
   background: transparent;
-  border: 2px solid rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(255, 255, 255, .5);
   border-radius: 20px;
   backdrop-filter: blur(20px);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .5);
   display: grid;
+  margin-top: -100%;
+  top: 410px;
+  left: -80%;
   justify-content: center;
   align-items: center;
   overflow: auto;
-  margin: 5vh auto;
-  padding: 20px;
 }
 
-.tabela tr {
+.tabela tr{
   text-align: center;
 }
 
-.tabela th {
+.tabela th{
   padding: 5px;
   font-weight: 600;
 }
 
-.tabela td {
+.tabela td{
   text-align: center;
 }
 
@@ -356,10 +355,10 @@ header {
   text-align: center;
   justify-content: center;
   left: 80%;
-  top: -650px;
+  top: -210px;
 }
 
-.btnConvert {
+.btnConvert{
   /* width: 130px;
   height: 50px; */
   padding: 7px;
@@ -382,11 +381,11 @@ header {
   color: #162938;
 }
 
-.wynik {
+.wynik{
   position: relative;
 }
 
-.selectCustom {
+.selectCustom{
   position: relative;
   display: block;
   width: 100%;
@@ -397,7 +396,7 @@ header {
   color: #60666d;
 }
 
-.number {
+.number{
   position: relative;
   display: block;
   width: 100%;
@@ -415,7 +414,7 @@ header {
   top: -20px;
 } */
 
-.whichTable {
+.whichTable{
   color: #fff;
   text-shadow: 1px 1px #162938;
   align-items: center;
@@ -433,7 +432,7 @@ header {
   width: 900px;
 }
 
-.btnCalc4 {
+.btnCalc4{
   position: relative;
   width: 500px;
   height: 50px;
@@ -454,6 +453,6 @@ header {
   color: #162938;
 }
 
-::-webkit-scrollbar-track {
+::-webkit-scrollbar-track{
   border-radius: 10px;
 }

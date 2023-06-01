@@ -24,6 +24,16 @@ const Nav: React.FunctionComponent<INavProps> = (props:INavProps) => {
         nav('/Calculator')
     }
 
+    //przycisk games
+    const gamesHandler = () => {
+      nav('/Games')
+    }
+    
+    //przycisk cos
+    const cosHandler = () => {
+      nav('/Cos')
+    }
+
     const logOutHandler = () => {
         localStorage.removeItem("accessToken"); // Usunięcie tokenu z localStorage
         props.setIsLoggedIn(false); // Ustawienie stanu uwierzytelnienia na false
@@ -38,8 +48,8 @@ const Nav: React.FunctionComponent<INavProps> = (props:INavProps) => {
         <nav className="navigation">
           <a onClick={hPHandler}>Home</a>
           <a onClick={calcHandler}>Calculator</a>
-          <a href="#">Services</a>
-          <a href="#">Contact</a>
+          <a onClick={gamesHandler}>Games</a>
+          <a onClick={cosHandler}>Cos</a>
           <button className="btnLogout" onClick={logOutHandler}>
             Log Out
           </button>

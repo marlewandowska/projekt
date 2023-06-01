@@ -164,7 +164,7 @@ const Calculator: React.FC = () => {
                         <div>
                             <label>From:</label>
                             <select className="selectCustom" value={toCurrency} onChange={handleToCurrencyChange}>
-                                <option value="PLN">Polish Zloty (PLN)</option>
+                                <option value="PLN">polski złoty</option>
                                 {currencies.map((currency) => (
                                     <option key={currency.code} value={currency.code}>
                                         {currency.currency}
@@ -176,7 +176,7 @@ const Calculator: React.FC = () => {
                         <div>
                             <label>To:</label>
                             <select className="selectCustom" value={fromCurrency} onChange={handleFromCurrencyChange}>
-                                <option value="PLN">Polish Zloty (PLN)</option>
+                                <option value="PLN">polski złoty</option>
                                 {currencies.map((currency) => (
                                     <option key={currency.code} value={currency.code}>
                                         {currency.currency}
@@ -184,15 +184,14 @@ const Calculator: React.FC = () => {
                                 ))}
                             </select>
                         </div>
-
                         <button className="btnConvert" onClick={handleConversion}>Convert</button>
                         {convertedAmount > 0 && (
                             <div className="wynik">
                                 <h3>Converted Amount:</h3>
                                 {toCurrency === 'PLN' ? (
-                                    <p>{convertedAmount.toFixed(4)}</p>
+                                    <p>{convertedAmount.toFixed(4)} {fromCurrency}</p>
                                 ) : (
-                                    <p>{convertedAmount.toFixed(4)}</p>
+                                    <p>{convertedAmount.toFixed(4)} {fromCurrency}</p>
                                 )}
                             </div>
                         )}

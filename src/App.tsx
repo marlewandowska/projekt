@@ -8,6 +8,8 @@ import Nav from "./pages/NavBar";
 import Calculator from "./pages/Calculator";
 import Calc2 from "./pages/Calculator2";
 import Calc3 from "./pages/Calculator3";
+import Games from "./pages/Games";
+import Cos from "./pages/Cos";
 
 export interface IAppProps {}
 
@@ -40,6 +42,8 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
           <Route path="Calculator" element={<Calculator />} />
           <Route path="Calculator2" element={<Calc2 />} />
           <Route path="Calculator3" element={<Calc3 />} />
+          <Route path="Games" element={<Games />} />
+          <Route path="Cos" element={<Cos />} />
         </Routes>
       </div>
     </BrowserRouter>

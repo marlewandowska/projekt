@@ -297,7 +297,7 @@ header {
 
 
 
-.tabela{
+.tabela {
   color: #fff;
   text-shadow: 1px 1px #162938;
   position: relative;
@@ -319,16 +319,16 @@ header {
   overflow: auto;
 }
 
-.tabela tr{
+.tabela tr {
   text-align: center;
 }
 
-.tabela th{
+.tabela th {
   padding: 5px;
   font-weight: 600;
 }
 
-.tabela td{
+.tabela td {
   text-align: center;
 }
 
@@ -358,7 +358,7 @@ header {
   top: -210px;
 }
 
-.btnConvert{
+.btnConvert {
   /* width: 130px;
   height: 50px; */
   padding: 7px;
@@ -381,11 +381,11 @@ header {
   color: #162938;
 }
 
-.wynik{
+.wynik {
   position: relative;
 }
 
-.selectCustom{
+.selectCustom {
   position: relative;
   display: block;
   width: 100%;
@@ -396,7 +396,7 @@ header {
   color: #60666d;
 }
 
-.number{
+.number {
   position: relative;
   display: block;
   width: 100%;
@@ -414,7 +414,7 @@ header {
   top: -20px;
 } */
 
-.whichTable{
+.whichTable {
   color: #fff;
   text-shadow: 1px 1px #162938;
   align-items: center;
@@ -432,7 +432,7 @@ header {
   width: 900px;
 }
 
-.btnCalc4{
+.btnCalc4 {
   position: relative;
   width: 500px;
   height: 50px;
@@ -453,6 +453,45 @@ header {
   color: #162938;
 }
 
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
   border-radius: 10px;
+}
+
+.btnGames {
+  position: relative;
+  width: 350px;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #ffff;
+  outline: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1.1em;
+  margin-left: 40px;
+  font-weight: 500;
+  color: #ffff;
+  transition: .5s;
+}
+
+.btnGames:hover {
+  background: #fff;
+  color: #162938;
+}
+
+.conGames {
+  color: #fff;
+  text-shadow: 1px 1px #162938;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  position: relative;
+  font-size: 1.1em;
+  display: grid;
+  border: 2px solid rgba(255, 255, 255, .5);
+  border-radius: 20px;
+  background: transparent;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+  height: 400px;
+  width: 900px;
 }

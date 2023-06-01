@@ -39,7 +39,7 @@ const Calc2: React.FunctionComponent<ICalc2Props> = (props) => {
 
     const fetchCurrencyData = async () => {
         try {
-            const response = await fetch('http://api.nbp.pl/api/exchangerates/tables/A/');
+            const response = await fetch('http://api.nbp.pl/api/exchangerates/tables/B/');
             const data = await response.json();
             const currencyData: Currency[] = data[0].rates;
             //zlotowki
@@ -150,7 +150,7 @@ const Calc2: React.FunctionComponent<ICalc2Props> = (props) => {
                     <div>
                         <label>From:</label>
                         <select className="selectCustom" value={toCurrency} onChange={handleToCurrencyChange}>
-                            <option value="PLN">Polish Zloty (PLN)</option>
+                            <option value="PLN">polski złoty</option>
                             {currencies.map((currency) => (
                                 <option key={currency.code} value={currency.code}>
                                     {currency.currency}
@@ -162,7 +162,7 @@ const Calc2: React.FunctionComponent<ICalc2Props> = (props) => {
                     <div>
                         <label>To:</label>
                         <select className="selectCustom" value={fromCurrency} onChange={handleFromCurrencyChange}>
-                            <option value="PLN">Polish Zloty (PLN)</option>
+                            <option value="PLN">polski złoty</option>
                             {currencies.map((currency) => (
                                 <option key={currency.code} value={currency.code}>
                                     {currency.currency}
@@ -175,9 +175,9 @@ const Calc2: React.FunctionComponent<ICalc2Props> = (props) => {
                         <div className="wynik">
                             <h3>Converted Amount:</h3>
                             {toCurrency === 'PLN' ? (
-                                <p>{convertedAmount.toFixed(4)}</p>
+                                <p>{convertedAmount.toFixed(4)} {fromCurrency}</p>
                             ) : (
-                                <p>{convertedAmount.toFixed(4)}</p>
+                                <p>{convertedAmount.toFixed(4)} {fromCurrency}</p>
                             )}
                         </div>
                     )}
